@@ -1,0 +1,87 @@
+version: "3.8"
+
+volumes:
+  postgres_data: {}
+
+networks:
+  internal: {}
+  public: {}
+
+x-app: &app
+  build: .
+
+services:
+  #  nginx:
+  #    image: nginx:1.21.3-alpine
+  #
+  #    ports:
+  #      - "8080:80"
+  #
+  #
+  #    depends_on:
+  #      app:
+  #        condition: service_healthy
+  #
+  #    profiles:
+  #      - full_dev
+  #      - local_dev
+  #
+  #    networks:
+  #      - public
+
+  app:
+    <<: *app
+    depends_on:
+      init:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+
+    profiles:
+      - full_dev
+
+    networks:
+      - internal
+      - public
+
+  init:
+    <<: *app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: /init.sh
+
+    profiles:
+      - full_dev
+      - local_dev
+
+    networks:
+      - internal
+
+  postgres:
+    image: postgres:16.3-alpine3.20
+
+    environment:
+      POSTGRES_DB: "${POSTGRES_DB}"
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready --username ${POSTGRES_USER}  --dbname ${POSTGRES_DB}",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data:rw
+
+    profiles:
+      - full_dev
+      - local_dev
+
+    networks:
+      - internal
