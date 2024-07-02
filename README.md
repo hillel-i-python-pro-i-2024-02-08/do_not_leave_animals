@@ -24,4 +24,4 @@
 - **Docker** - Deploy додатку
 - **Compose** - Оркестратор
 - **Django-ninja** - API + auto docs
-- **Bootstrap** - styles
+- **Bootstrap** - styles.
