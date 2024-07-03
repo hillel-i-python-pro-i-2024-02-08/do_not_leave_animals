@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block Body %}
-    <h2>Its a blog!</h2>
+    <h2>Its a blog! <a href={% url "blog:new_post" %}>New post</a></h2>
     {% for post in posts %}
         <h3>{{ post.author }}</h3>
         <h4>{{ post.title }}</h4>
