@@ -6,6 +6,11 @@ from ..forms import PostForm
 
 
 def index(request):
+    """
+    Blog index page
+    :param request: request object
+    :return: render index page
+    """
     last_posts = Post.objects.order_by('-date')[:5]
     context = {"title": "Blog", "posts": last_posts}
 
@@ -15,6 +20,11 @@ def index(request):
 
 
 def new_post(request):
+    """
+    Create new post to blog page
+    :param request: request object
+    :return: render new post page or redirect to index page with new post
+    """
     context = {"title": "New Post", "form": PostForm}
     if request.method == "POST":
         form = PostForm(request.POST)
