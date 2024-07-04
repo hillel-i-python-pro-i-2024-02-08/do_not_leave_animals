@@ -3,7 +3,6 @@
 {% block Body %}
     <h2>Its a blog! <a href={% url "blog:new_post" %}>New post</a></h2>
     {% for post in posts %}
-        <h3>{{ post.author }}</h3>
         <h4>{{ post.title }}</h4>
         <p>{{ post.description }}</p>
         <h5>{{ post.date }}</h5>
