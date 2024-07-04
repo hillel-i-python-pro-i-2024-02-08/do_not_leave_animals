@@ -1,1 +1,1 @@
-from apps.blog.views import index
+from .index import  index
