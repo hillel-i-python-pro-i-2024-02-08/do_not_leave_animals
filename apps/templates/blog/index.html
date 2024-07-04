@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block Body %}
-    <h2>Its a blog! <a href={% url "blog:new_post" %}>New post</a></h2>
+    <h2>Its a blog! {% if is_staff %}<a href={% url "blog:new_post" %}>New post</a></h2>{% endif %}
     {% for post in posts %}
         <h4>{{ post.title }}</h4>
         <p>{{ post.description }}</p>
         <h5>{{ post.date }}</h5>
-        <a href={% url "blog:edit_post" post.id %}>Edit</a>
+        {% if is_staff %}<a href={% url "blog:edit_post" post.id %}>Edit</a>{% endif %}
     {% endfor %}
     
     <div class="pagination">
