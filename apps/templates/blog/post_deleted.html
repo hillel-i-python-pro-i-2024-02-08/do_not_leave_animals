@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block Body %}
+    <h3>Post deleted.</h3>
+    <a href="{% url 'blog:index' %}"><button>Blog page</button></a>
+    <a href="{% url 'blog:new_post' %}"><button>New post</button></a>
+{% endblock %}

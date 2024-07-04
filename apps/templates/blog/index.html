@@ -6,5 +6,6 @@
         <h4>{{ post.title }}</h4>
         <p>{{ post.description }}</p>
         <h5>{{ post.date }}</h5>
+        <a href={% url "blog:edit_post" post.id %}>Edit</a>
     {% endfor %}
 {% endblock %}

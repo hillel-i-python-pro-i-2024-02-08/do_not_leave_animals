@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block Body %}
+    <form method="post" action="{% url "blog:edit_post" post_id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button> 
+    </form>
+    <a href="{% url 'blog:delete_post' post_id %}"><button style="color: red">Delete post</button></a>
+{% endblock %}
