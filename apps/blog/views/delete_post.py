@@ -11,6 +11,7 @@ def delete_post(request, post_id):
     :return: redirect or render page
     """
     post = Post.objects.get(id=post_id)
+    context = {"title": "Delete post", "post": post}
 
     if request.method == "POST":
         post.delete()
@@ -18,5 +19,5 @@ def delete_post(request, post_id):
     else:
         return render(request=request,
                       template_name="blog/delete_post.html",
-                      context={"post": post})
+                      context={"post": context})
 

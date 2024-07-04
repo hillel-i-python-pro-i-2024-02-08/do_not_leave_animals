@@ -13,7 +13,7 @@ def edit_post(request, post_id):
     :return: render edit post page or redirect to index page with posts
     """
     post = Post.objects.get(id=post_id)
-    context = {"title": "New Post", "form": PostForm(instance=post), "post_id": post_id}
+    context = {"title": "Edit Post", "form": PostForm(instance=post), "post_id": post_id}
 
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)

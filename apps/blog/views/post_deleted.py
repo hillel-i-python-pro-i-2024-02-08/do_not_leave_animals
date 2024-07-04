@@ -7,4 +7,7 @@ def post_deleted(request) -> render:
     :param request: request object
     :return: render post deleted page
     """
-    return render(request, 'blog/post_deleted.html')
+    context = {"title": "Post Deleted"}
+    return render(request=request,
+                  template_name='blog/post_deleted.html',
+                  context=context)
