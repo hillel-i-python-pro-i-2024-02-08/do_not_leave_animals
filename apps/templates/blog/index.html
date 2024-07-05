@@ -9,13 +9,18 @@
                     <p style="text-align: left; font-size: 28px">
                         {{ post.title }}
                     </p>
-                    <p style="text-align: left; font-size: 14px">
+                    <p style="
+                    text-align: left;
+                    font-size: 14px;
+                    margin-top: -15px">
                         {{ post.description }}
                     </p>
                     <img style="max-width: 100%; max-height: 300px; margin-bottom: 20px"
                          src="{{ post.photo.url }}"
                          alt="тут должен был быть бельчонок Деги ;(">
-                    <h5 style="text-align: right">{{ post.date }}</h5>
+                    <div style="text-align: right">
+                        <h5>{{ post.date }}</h5>
+                    </div>
                     {% if is_staff %}
                         <a class="btn btn-primary" href="{% url 'blog:edit_post' post.id %}">Edit</a>
                     {% endif %}

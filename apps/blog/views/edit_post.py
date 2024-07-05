@@ -15,7 +15,6 @@ def edit_post(request, post_id):
     if request.user.is_staff:
 
         post = Post.objects.get(id=post_id)
-        context = {"title": "Edit Post", "form": PostForm(instance=post), "post_id": post_id}
 
         if request.method == "POST":
             form = PostForm(request.POST,
@@ -25,6 +24,7 @@ def edit_post(request, post_id):
                 form.save()
                 return HttpResponseRedirect("/blog/")
         elif request.method == 'GET':
+            context = {"title": "Edit Post", "form": PostForm(instance=post), "post_id": post_id}
             return render(request=request,
                           template_name='blog/edit_post.html',
                           context=context)
