@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block Body %}
+    <h2>Its a blog! {% if is_staff %}<a href={% url "blog:new_post" %}>New post</a></h2>{% endif %}
+    {% for post in posts %}
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.description }}</p>
+        <h5>{{ post.date }}</h5>
+        {% if is_staff %}<a href={% url "blog:edit_post" post.id %}>Edit</a>{% endif %}
+    {% endfor %}
+    
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1"> << </a>
+                <a href="?page={{ page_obj.previous_page_number }}"> < </a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}"> > </a>
+                <a href="?page={{ page_obj.paginator.num_pages }}"> >> </a>
+            {% endif %}
+        </span>
+    </div>
+    
+{% endblock %}
