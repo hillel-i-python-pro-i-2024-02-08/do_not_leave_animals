@@ -4,20 +4,23 @@
     <h2 style="text-align: center">Its a blog! {% if is_staff %}<a href={% url "blog:new_post" %}>New post</a></h2>{% endif %}
     {% for post in posts %}
         <div style="margin: auto" class="col-md-4 mb-4">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <p style="text-align: left; font-size: 28px">
-                                {{ post.title }}
-                            </p>
-                            <p style="text-align: left; font-size: 14px">
-                                {{ post.description }}
-                            </p>
-                            <h5 style="text-align: right">{{ post.date }}</h5>
-                            {% if is_staff %}
-                                <a class="btn btn-primary" href="{% url 'blog:edit_post' post.id %}">Edit</a>
-                            {% endif %}
-                        </div>
-                    </div>
+            <div class="card text-center">
+                <div class="card-body">
+                    <p style="text-align: left; font-size: 28px">
+                        {{ post.title }}
+                    </p>
+                    <p style="text-align: left; font-size: 14px">
+                        {{ post.description }}
+                    </p>
+                    <img style="max-width: 100%; max-height: 300px; margin-bottom: 20px"
+                         src="{{ post.photo.url }}"
+                         alt="тут должен был быть бельчонок Деги ;(">
+                    <h5 style="text-align: right">{{ post.date }}</h5>
+                    {% if is_staff %}
+                        <a class="btn btn-primary" href="{% url 'blog:edit_post' post.id %}">Edit</a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     {% endfor %}
     <div class="d-flex justify-content-center mt-4">

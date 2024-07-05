@@ -7,7 +7,9 @@
                             Edit post
                         </h5>
                         <div class="card-body">
-                            <form method="post" action="{% url "blog:edit_post" post_id %}">
+                            <form method="post" 
+                                  enctype="multipart/form-data" 
+                                  action="{% url "blog:edit_post" post_id %}">
                                 {% csrf_token %}
                                 {{ form.as_p }}
                                 <button class="btn btn-primary" type="submit">Save</button>

@@ -18,7 +18,9 @@ def edit_post(request, post_id):
         context = {"title": "Edit Post", "form": PostForm(instance=post), "post_id": post_id}
 
         if request.method == "POST":
-            form = PostForm(request.POST, instance=post)
+            form = PostForm(request.POST,
+                            request.FILES,
+                            instance=post)
             if form.is_valid():
                 form.save()
                 return HttpResponseRedirect("/blog/")

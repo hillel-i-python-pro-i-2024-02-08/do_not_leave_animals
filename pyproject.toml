@@ -13,6 +13,7 @@ Django = "^5.0.6"
 psycopg = {extras = ["binary"], version = "^3.2.1"}
 # work with env variables
 django-environ = "^0.11.2"
+pillow = "^10.4.0"
 
 [tool.poetry.group.dev.dependencies]
 # pre-commit linters and formatters

@@ -9,7 +9,9 @@
                             New post
                         </h5>
                         <div class="card-body">
-                            <form method="post" action="{% url "blog:new_post" %}">
+                            <form enctype="multipart/form-data" 
+                                  method="post" 
+                                  action="{% url "blog:new_post" %}">
                                 {% csrf_token %}
                                 {{ form.as_p }}
                                 <button class="btn btn-primary" type="submit">
