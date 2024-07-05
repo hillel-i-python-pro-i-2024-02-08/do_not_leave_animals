@@ -13,14 +13,11 @@ def delete_post(request, post_id):
     """
     if request.user.is_staff:
         post = Post.objects.get(id=post_id)
-        context = {"title": "Delete post", "post": post}
 
         if request.method == "POST":
             post.delete()
             return redirect('blog:post_deleted')
         else:
-            return render(request=request,
-                          template_name="blog/delete_post.html",
-                          context={"post": context})
+            return render(request, 'blog/delete_post.html', {'post': post})
     else:
         return HttpResponseForbidden()
