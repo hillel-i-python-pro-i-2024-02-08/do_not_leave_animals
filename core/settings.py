@@ -51,6 +51,7 @@ LOCAL_APPS = [
     "apps.animals_feed",
     "apps.blog",
     "apps.users",
+    "apps.about",
 ]
 
 THIRD_PARTY_APPS: list[str] = []
