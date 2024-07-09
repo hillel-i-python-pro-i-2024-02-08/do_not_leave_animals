@@ -11,7 +11,7 @@ def index(request):
     :return: render index page
     """
     paginator = Paginator(Post.objects.order_by("-date"), 3)
-    page = request.GET.get('page')
+    page = request.GET.get("page")
     page_obj = paginator.get_page(page)
     try:
         posts = paginator.page(page)
@@ -25,4 +25,3 @@ def index(request):
     context = {"title": "Blog", "posts": posts, "page_obj": page_obj, "is_staff": request.user.is_staff}
 
     return render(request, "blog/index.html", context)
-

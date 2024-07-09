@@ -16,8 +16,8 @@ def delete_post(request, post_id):
 
         if request.method == "POST":
             post.delete()
-            return redirect('blog:post_deleted')
+            return redirect("blog:post_deleted")
         else:
-            return render(request, 'blog/delete_post.html', {'post': post})
+            return render(request, "blog/delete_post.html", {"post": post})
     else:
         return HttpResponseForbidden()

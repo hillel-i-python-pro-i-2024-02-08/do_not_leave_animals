@@ -18,6 +18,4 @@ def register(request):
             return redirect("about:index")
 
     context = {"form": form, "title": "Register"}
-    return render(request=request,
-                  template_name="registration/register.html",
-                  context=context)
+    return render(request=request, template_name="registration/register.html", context=context)

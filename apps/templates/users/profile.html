@@ -1,6 +1,12 @@
 {% extends "base.html" %}
-
 {% block Body %}
     <p>Username: {{ user.username }}</p>
-    <p>Email: {% if user.email %}{{ user.email }}{% else %}empty{% endif %}</p>
-{% endblock %}
+    <p>
+        Email:
+        {% if user.email %}
+            {{ user.email }}
+        {% else %}
+            empty
+        {% endif %}
+    </p>
+{% endblock Body %}

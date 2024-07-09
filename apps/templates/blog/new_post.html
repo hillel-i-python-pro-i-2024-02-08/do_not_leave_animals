@@ -1,27 +1,20 @@
 {% extends "base.html" %}
-
 {% block Body %}
     <div style="margin: auto" class="col-md-4 mb-4">
-                    <div class="card text-center">
-                        <h5 style="
-                        margin-top: 20px;
-                        margin-bottom: 20px;">
-                            New post
-                        </h5>
-                        <div class="card-body">
-                            <form enctype="multipart/form-data" 
-                                  method="post" 
-                                  action="{% url "blog:new_post" %}">
-                                {% csrf_token %}
-                                {{ form.as_p }}
-                                <button class="btn btn-primary" type="submit">
-                                    New post
-                                </button>
-                                <a style="color: white"
-                                   class="btn btn-info" 
-                                   href="{% url 'blog:index' %}">Back</a>
-                            </form>
-                        </div>
-                    </div>
+        <div class="card text-center">
+            <h5 style=" margin-top: 20px; margin-bottom: 20px;">New post</h5>
+            <div class="card-body">
+                <form enctype="multipart/form-data"
+                      method="post"
+                      action="{% url "blog:new_post" %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-primary" type="submit">New post</button>
+                    <a style="color: white"
+                       class="btn btn-info"
+                       href="{% url 'blog:index' %}">Back</a>
+                </form>
+            </div>
+        </div>
     </div>
-{% endblock %}
+{% endblock Body %}

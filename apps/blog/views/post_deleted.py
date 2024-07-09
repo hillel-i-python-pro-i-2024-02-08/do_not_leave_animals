@@ -10,8 +10,6 @@ def post_deleted(request) -> render:
     """
     if request.user.is_staff:
         context = {"title": "Post Deleted"}
-        return render(request=request,
-                      template_name='blog/post_deleted.html',
-                      context=context)
+        return render(request=request, template_name="blog/post_deleted.html", context=context)
     else:
         return HttpResponseForbidden()
