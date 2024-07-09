@@ -13,7 +13,7 @@ def new_post(request):
     if request.user.is_staff:
         context = {"title": "New Post", "form": PostForm}
         if request.method == "POST":
-            form = PostForm(request.POST)
+            form = PostForm(request.POST, request.FILES )
             if form.is_valid():
                 form.save()
                 return HttpResponseRedirect("/blog/")

@@ -51,6 +51,7 @@ LOCAL_APPS = [
     "apps.animals_feed",
     "apps.blog",
     "apps.users",
+    "apps.about",
 ]
 
 THIRD_PARTY_APPS: list[str] = []
@@ -141,10 +142,11 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [APPS_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-MEDIA_URL = "media/"
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+LOGIN_REDIRECT_URL = "/blog/"
