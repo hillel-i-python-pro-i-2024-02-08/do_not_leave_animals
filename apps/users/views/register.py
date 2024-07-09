@@ -15,7 +15,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("about:index")
+            return redirect("home_page:home")
 
     context = {"form": form, "title": "Register"}
     return render(request=request, template_name="registration/register.html", context=context)
