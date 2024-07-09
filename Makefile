@@ -59,6 +59,12 @@ migrations:
 # Migrate
 migrate:
 	@python manage.py migrate
+
+
+.PHONY: make-migrations
+make-migrations:
+	@python manage.py makemigrations &&\
+	python manage.py migrate
 # [migrations]-[END]
 
 
