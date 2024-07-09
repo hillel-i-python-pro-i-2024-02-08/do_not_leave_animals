@@ -1,25 +1,20 @@
 {% extends "base.html" %}
-
 {% block Body %}
     <div style="margin: auto" class="col-md-4 mb-4">
-                    <div class="card text-center">
-                        <h5 style="margin-bottom: 20px;">
-                            Edit post
-                        </h5>
-                        <div class="card-body">
-                            <form method="post" 
-                                  enctype="multipart/form-data" 
-                                  action="{% url "blog:edit_post" post_id %}">
-                                {% csrf_token %}
-                                {{ form.as_p }}
-                                <button class="btn btn-primary" type="submit">Save</button>
-                                <a style="margin-left: 5px" 
-                                   class="btn btn-danger" 
-                                   href="{% url 'blog:delete_post' post_id %}">
-                                    Delete
-                                </a>
-                            </form>
-                        </div>
-                    </div>
+        <div class="card text-center">
+            <h5 style="margin-bottom: 20px;">Edit post</h5>
+            <div class="card-body">
+                <form method="post"
+                      enctype="multipart/form-data"
+                      action="{% url "blog:edit_post" post_id %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-primary" type="submit">Save</button>
+                    <a style="margin-left: 5px"
+                       class="btn btn-danger"
+                       href="{% url 'blog:delete_post' post_id %}">Delete</a>
+                </form>
+            </div>
+        </div>
     </div>
-{% endblock %}
+{% endblock Body %}

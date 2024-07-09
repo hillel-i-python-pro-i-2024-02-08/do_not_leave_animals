@@ -25,9 +25,11 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 line-length = 120
+exclude = [
+    "**/migrations/**",
+]
 
 [tool.ruff.lint]
-
 extend-ignore = [
     # flake8-future-annotations.
     "FA",
@@ -72,5 +74,4 @@ allow-dict-calls-with-keyword-arguments = true
 ]
 
 [tool.djlint]
-# H006: img must have width and height attributes
-ignore="H006"
+ignore="H006,H021"

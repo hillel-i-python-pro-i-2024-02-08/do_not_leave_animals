@@ -6,6 +6,7 @@ class PostForm(forms.ModelForm):
     """
     Form for creating a post
     """
+
     class Meta:
         model = Post
-        fields = ['title', 'description', 'photo']
+        fields = ["title", "description", "photo"]

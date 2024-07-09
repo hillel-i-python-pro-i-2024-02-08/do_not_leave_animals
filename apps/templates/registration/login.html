@@ -1,38 +1,36 @@
 {% extends "base.html" %}
-
 {% block Head %}
     <title>DNLA | Login</title>
-{% endblock %}
-
+{% endblock Head %}
 {% if form.errors %}
     <p style="text-align: center">Your username and password didn`t match, please try again</p>
 {% endif %}
-
 {% block Body %}
-    <div style="display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding-top: 40px;">
-        <div class="card text-center" style="width: 100%; max-width: 500px; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-            <h5 style="margin-bottom: 20px;">
-                Login
-            </h5>
+    <div style="display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                min-height: 100vh;
+                padding-top: 40px">
+        <div class="card text-center"
+             style="width: 100%;
+                    max-width: 500px;
+                    padding: 20px;
+                    box-shadow: 0 0 10px rgba(0,0,0,0.1)">
+            <h5 style="margin-bottom: 20px;">Login</h5>
             <div style="margin-top: 30px" class="card-body">
                 <form method="post" action="{% url 'users:login' %}">
-                                {% csrf_token %}
-                                {{ form.as_p }}
-                                <div style="
-                                margin-top: 30px;
-                                display: flex;
-                                justify-content: center;">
-                                    <button type="submit" class="btn btn-primary"
-                                            style="
-                                            text-align: center;
-                                            width: 40%;
-                                            padding: 10px;
-                                            margin-top: 20px;">
-                                        Log In
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div style=" margin-top: 30px; display: flex; justify-content: center;">
+                        <button type="submit"
+                                class="btn btn-primary"
+                                style="text-align: center;
+                                       width: 40%;
+                                       padding: 10px;
+                                       margin-top: 20px">Log In</button>
                     </div>
+                </form>
+            </div>
+        </div>
     </div>
-{% endblock %}
+{% endblock Body %}

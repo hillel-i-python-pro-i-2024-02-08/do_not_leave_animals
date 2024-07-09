@@ -11,24 +11,6 @@ x-app: &app
   build: .
 
 services:
-  #  nginx:
-  #    image: nginx:1.21.3-alpine
-  #
-  #    ports:
-  #      - "8080:80"
-  #
-  #
-  #    depends_on:
-  #      app:
-  #        condition: service_healthy
-  #
-  #    profiles:
-  #      - full_dev
-  #      - local_dev
-  #
-  #    networks:
-  #      - public
-
   app:
     <<: *app
     depends_on:
