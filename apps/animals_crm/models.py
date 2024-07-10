@@ -1,5 +1,5 @@
 # noinspection PyPackageRequirements
-import ulid
+from ulid import new
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -11,9 +11,9 @@ def get_animal_avatar_path(
 ) -> str:
     filename_part, extension = filename.rsplit(".", maxsplit=1)
 
-    uuid_from_ulid = ulid.new().uuid.hex
+    unique_part = new().uuid.hex
 
-    return f"photos/crm/{uuid_from_ulid}/file.{extension}"
+    return f"photos/crm/{unique_part}/{filename_part}.{extension}"
 
 
 class AnimalPhoto(models.Model):
