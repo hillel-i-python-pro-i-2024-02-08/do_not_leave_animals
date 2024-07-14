@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block Body %}
+    <h2 style="text-align: center">Its a feed!</h2>
+    {% for animal in posts %}
+        <div style="margin: auto" class="col-md-4 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <p style="text-align: left; font-size: 28px">
+                        {{ animal }}, {{ animal.age }}
+                        {% if animal.age == 1 %}
+                            year
+                        {% else %}
+                            years
+                        {% endif %}
+                    </p>
+                    <p style="text-align: left; font-size: 15px; margin-top: -15px">{{ animal.description }}</p>
+                    <img style="max-width: 100%;
+                                max-height: 300px;
+                                margin-bottom: 20px"
+                         src="{{ animal.last_photo }}"
+                         alt="тут должен был быть бельчонок Деги ;(">
+                    <p style="text-align: right; font-size: 20px">{{ animal.created_at }}</p>
+                    <p style="text-align: left; font-size: 16px">Comments ({{ animal.comments.count }})</p>
+                    {% if animal.last_comment %}
+                        <div style=" text-align: left; margin-left: 20px; font-size: 16px">
+                            <p style="margin-top: -15px; font-size: 14px">{{ animal.last_comment }}</p>
+                            <p style="margin-top: -20px; font-size: 11px">{{ animal.created_at }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="d-flex justify-content-center mt-4">
+        <nav>
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1"> << </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}"> < </a>
+                    </li>
+                {% endif %}
+                <li class="page-item disabled">
+                    <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+                </li>
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">>></a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endblock Body %}
