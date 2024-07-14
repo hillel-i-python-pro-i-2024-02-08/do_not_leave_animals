@@ -35,7 +35,7 @@ class AnimalCard(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
 
     def last_photo(self) -> AnimalPhoto:
-        return self.photos.last()
+        return self.photos.last().image.url
 
     def last_comment(self) -> AnimalComment:
         return self.comments.last()
