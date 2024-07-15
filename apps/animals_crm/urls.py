@@ -2,6 +2,13 @@ from django.urls import path
 from . import views
 
 
-app_name = "animals_crm"
+app_name = "crm"
 
-urlpatterns: list[path] = [path("", views.crm_index, name="crm_index")]
+urlpatterns: list[path] = [
+    path("", views.crm_index, name="crm"),
+    path("", views.new_card, name="new_card"),
+    # work with 1 card
+    path("<int:card_id>", views.animal_card, name="animal_card"),
+    path("<int:card_id>", views.edit_card, name="edit_card"),
+    path("<int:card_id>", views.delete_card, name="delete_card"),
+]
