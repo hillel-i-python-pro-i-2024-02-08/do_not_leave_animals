@@ -7,10 +7,10 @@ from apps.animals_crm import models
 def feed(request):
     paginator = Paginator(models.AnimalCard.objects.order_by("-created_at"), 3)
 
-    page_obj = paginator.get_page(request.GET.get("page"))
+    page_obj = request.GET.get("page")
 
     try:
-        posts = paginator.page(request.GET.get("page"))
+        posts = paginator.page(page_obj)
     except NameError:
         posts = paginator.page(1)
     except PageNotAnInteger:

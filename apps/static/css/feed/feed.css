@@ -1,0 +1,40 @@
+/* Модальное окно (скрыто по умолчанию) */
+.modal {
+  display: none; /* Скрыть по умолчанию */
+  position: fixed; /* Оставаться на одном месте */
+  z-index: 1000; /* Слоёвый порядок */
+  padding-top: 60px; /* Верхний отступ */
+  left: 0;
+  top: 0;
+  width: 100%; /* Полная ширина */
+  height: 100%; /* Полная высота */
+  overflow: auto; /* Включить прокрутку, если необходимо */
+  background-color: rgb(0, 0, 0); /* Фон */
+  background-color: rgba(0, 0, 0, 0.9); /* С прозрачностью */
+}
+
+/* Модальное содержимое (изображение) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 30%;
+  max-width: 700px;
+}
+
+/* Закрыть кнопку */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
