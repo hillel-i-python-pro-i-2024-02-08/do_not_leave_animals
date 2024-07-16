@@ -29,14 +29,17 @@
                         <span class="close" onclick="closeModal()">X</span>
                         <img class="modal-content" id="modalImage" alt="{{ animal }}">
                     </div>
-                    <p style="text-align: right; font-size: 20px">{{ animal.created_at }}</p>
-                    <p style="text-align: left; font-size: 16px">
+                    <p style="display: flex;
+                              justify-content: space-between;
+                              font-size: 16px;
+                              margin-bottom: 0">
                         <a href="{% url 'animals_feed:card' animal.pk %}">Comments ({{ animal.comments.count }})</a>
+                        <span style="font-size: 14px">{{ animal.created_at }}</span>
                     </p>
                     {% if animal.last_comment %}
-                        <div style=" text-align: left; margin-left: 20px; font-size: 16px">
-                            <p style="margin-top: -15px; font-size: 14px">{{ animal.last_comment }}</p>
-                            <p style="margin-top: -20px; font-size: 11px">{{ animal.created_at }}</p>
+                        <div style="text-align: left; margin-left: 30px">
+                            <p style="margin-bottom: -5px; font-size: 14px">{{ animal.last_comment }}</p>
+                            <p style="margin: 0; font-size: 11px">{{ animal.last_comment.created_at }}</p>
                         </div>
                     {% endif %}
                 </div>
@@ -72,7 +75,7 @@
     function openModal(imageUrl) {
         var modal = document.getElementById("imageModal");
         var modalImg = document.getElementById("modalImage");
-        modal.style.display = "flex"; // Используем flex для центрирования
+        modal.style.display = "flex";
         modalImg.src = imageUrl;
     }
 
@@ -81,7 +84,7 @@
         modal.style.display = "none";
     }
 
-    // Закрытие модального окна при клике на область вне изображения
+
     var modal = document.getElementById("imageModal");
     modal.addEventListener('click', function(event) {
         if (event.target !== modal && event.target !== document.getElementById("modalImage")) {
