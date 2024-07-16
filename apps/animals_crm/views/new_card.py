@@ -25,10 +25,10 @@ def new_card(request: HttpRequest):
         form = AnimalCardForm()
         photos_formset = AnimalPhotoFormSet()
         comments_formset = AnimalCommentFormSet()
-        context = {
-            "title": "New Card",
-            "form": form,
-            "photos_formset": photos_formset,
-            "comments_formset": comments_formset,
-        }
-        return render(request=request, template_name="crm/new_card.html", context=context)
+    context = {
+        "title": "New Card",
+        "form": form,
+        "photos_formset": photos_formset,
+        "comments_formset": comments_formset,
+    }
+    return render(request=request, template_name="crm/new_card.html", context=context)

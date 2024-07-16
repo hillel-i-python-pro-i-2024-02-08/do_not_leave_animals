@@ -2,7 +2,7 @@
 {% load static %}
 {% block Body %}
     <h2 style="text-align: center">
-        Its a blog!
+        Welcome to CRM system, {{ user.username }}
         <a href="{% url 'crm:new_card' %}">New card</a>
     </h2>
     {% for animal in animals %}

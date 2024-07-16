@@ -12,6 +12,6 @@ def admin_login_required(func):
         if user.is_staff or user.is_superuser:
             return func(request, *args, **kwargs)
         else:
-            return HttpResponseForbidden()
+            return HttpResponseForbidden("You do not have permission to view this page.")
 
     return wrapper

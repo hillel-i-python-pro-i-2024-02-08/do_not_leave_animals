@@ -19,7 +19,7 @@ class AnimalCardForm(forms.ModelForm):
         name = self.cleaned_data["name"]
         name.strip().title()
         for char in name:
-            if char in punctuation or char in digits or char in " \t\n":
+            if char in punctuation or char in digits or char in "\t\n":
                 raise ValidationError("Name must not have digits or punctuation characters")
         return name
 
