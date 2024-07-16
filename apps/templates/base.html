@@ -9,6 +9,8 @@
               integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
               crossorigin="anonymous">
         <title>DNLA | {{ title }}</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
         {% block Head %}
         {% endblock Head %}
     </head>
@@ -67,6 +69,31 @@
         </header>
         {% block Body %}
         {% endblock Body %}
+        <div style="margin-top: 100px">
+            <footer>
+                <div class="footer-content">
+                    <div style="margin-right: 100px" class="footer-left">
+                        <nav class="footer-nav">
+                            <a href="{% url 'home_page:home' %}">Home</a>
+                            <a href="{% url 'blog:index' %}">Blog</a>
+                            <a href="{% url 'animals_feed:index' %}">Feed</a>
+                        </nav>
+                    </div>
+                    <div style="margin-left: 100px" class="footer-right">
+                        <div class="footer-social">
+                            <a href="https://instagram.com"><i class="fab fa-instagram"></i> Instagram</a>
+                            <a href="https://facebook.com"><i class="fab fa-facebook"></i> Facebook</a>
+                            <a href="https://telegram.org"><i class="fab fa-telegram"></i> Telegram</a>
+                        </div>
+                        <div class="footer-contact">
+                            <p>Тел: +38 (063) 000-00-00</p>
+                            <p>Email: support@localhost</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="footer-copyright">© 2024 Do Not Leave Animals. All rights reserved.</p>
+            </footer>
+        </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
