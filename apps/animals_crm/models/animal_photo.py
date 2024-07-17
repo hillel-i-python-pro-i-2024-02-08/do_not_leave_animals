@@ -22,11 +22,7 @@ class AnimalPhoto(models.Model):
         related_name="photos",
     )
 
-    image = models.ImageField(
-        upload_to=get_animal_avatar_path,
-        null=False,
-        blank=False,
-    )
+    image = models.ImageField(upload_to=get_animal_avatar_path, null=False, blank=False, default="photos/default.jpg")
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)

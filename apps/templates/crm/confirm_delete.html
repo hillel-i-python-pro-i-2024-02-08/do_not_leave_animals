@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block Body %}
+    <p>Are you sure you want to delete card {{ instance.name }}?</p>
+    <form method="post"
+          enctype="multipart/form-data"
+          action="{% url 'crm:delete_card' instance.id %}">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Delete</button>
+        <a href="{% url 'crm:edit_card' instance.id %}" class="btn btn-primary">Back</a>
+    </form>
+{% endblock Body %}
