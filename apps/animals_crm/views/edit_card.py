@@ -13,15 +13,9 @@ def edit_card(request: HttpRequest, card_id: int):
         photos_formset = AnimalPhotoFormSet(request.POST, request.FILES, instance=card_instance)
         comments_formset = AnimalCommentFormSet(request.POST, instance=card_instance)
         if form.is_valid() and photos_formset.is_valid() and comments_formset.is_valid():
-            card = form.save()
-            photos = photos_formset.save(commit=False)
-            for photo in photos:
-                photo.animal = card
-                photo.save()
-            comments = comments_formset.save(commit=False)
-            for comment in comments:
-                comment.animal = card
-                comment.save()
+            form.save()
+            photos_formset.save()
+            comments_formset.save()
             return redirect("crm:crm")
     else:
         form = AnimalCardForm(instance=card_instance)

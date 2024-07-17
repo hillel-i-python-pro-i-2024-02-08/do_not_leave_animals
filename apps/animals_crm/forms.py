@@ -19,7 +19,7 @@ class AnimalCardForm(forms.ModelForm):
         name = self.cleaned_data["name"]
         name.strip().title()
         for char in name:
-            if char in punctuation or char in digits or char in "\t\n":
+            if char in punctuation and char != "'" or char in digits or char in "\t\n":
                 raise ValidationError("Name must not have digits or punctuation characters")
         return name
 
@@ -35,7 +35,7 @@ AnimalPhotoFormSet = forms.inlineformset_factory(
     model=AnimalPhoto,
     fields=["image"],
     labels={"image": "Photo or video"},
-    extra=1,
+    extra=10,
     max_num=10,
     validate_max=True,
 )

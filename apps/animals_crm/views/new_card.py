@@ -12,13 +12,11 @@ def new_card(request: HttpRequest):
         comments_formset = AnimalCommentFormSet(request.POST)
         if form.is_valid() and photos_formset.is_valid() and comments_formset.is_valid():
             card = form.save()
-            photos = photos_formset.save(commit=False)
-            for photo in photos:
-                photo.animal = card
-            comments = comments_formset.save(commit=False)
-            for comment in comments:
-                comment.animal = card
-                comment.save()
+            photos_formset.instance = card
+            photos_formset.save()
+            comments_formset.instance = card
+            comments_formset.save()
+
             return redirect("crm:crm")
 
     else:
