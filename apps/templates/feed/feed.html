@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block Head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/feed/feed.css' %}">
+{% endblock Head %}
+{% block Body %}
+    <h2 style="text-align: center">Its a feed!</h2>
+    {% for animal in posts %}
+        <div style="margin: auto" class="col-md-4 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <p style="text-align: left; font-size: 28px">
+                        <a href="{% url 'animals_feed:card' animal.pk %}">{{ animal }}</a>, {{ animal.age }}
+                        {% if animal.age == 1 %}
+                            year
+                        {% else %}
+                            years
+                        {% endif %}
+                    </p>
+                    <p style="text-align: left; font-size: 15px; margin-top: -15px">{{ animal.description }}</p>
+                    <img style="max-width: 100%;
+                                max-height: 300px;
+                                margin-bottom: 20px"
+                         src="{{ animal.last_photo }}"
+                         alt="{{ animal }}"
+                         class="clickable-image"
+                         onclick="openModal('{{ animal.last_photo }}')">
+                    <div id="imageModal" class="modal">
+                        <span class="close" onclick="closeModal()">X</span>
+                        <img class="modal-content" id="modalImage" alt="{{ animal }}">
+                    </div>
+                    <p style="display: flex;
+                              justify-content: space-between;
+                              font-size: 16px;
+                              margin-bottom: 0">
+                        <a href="{% url 'animals_feed:card' animal.pk %}">Comments ({{ animal.comments.count }})</a>
+                        <span style="font-size: 14px">{{ animal.created_at }}</span>
+                    </p>
+                    {% if animal.last_comment %}
+                        <div style="text-align: left; margin-left: 30px">
+                            <p style="margin-bottom: -5px; font-size: 14px">{{ animal.last_comment }}</p>
+                            <p style="margin: 0; font-size: 11px">{{ animal.last_comment.created_at }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="d-flex justify-content-center mt-4">
+        <nav>
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1"> << </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}"> < </a>
+                    </li>
+                {% endif %}
+                <li class="page-item disabled">
+                    <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+                </li>
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">>></a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    <script>
+    function openModal(imageUrl) {
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "flex";
+        modalImg.src = imageUrl;
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+    }
+
+
+    var modal = document.getElementById("imageModal");
+    modal.addEventListener('click', function(event) {
+        if (event.target !== modal && event.target !== document.getElementById("modalImage")) {
+            return;
+        }
+        closeModal();
+    });
+    </script>
+{% endblock Body %}

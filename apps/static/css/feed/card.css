@@ -1,0 +1,95 @@
+.swiper-container {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  overflow: hidden;
+}
+.swiper-container {
+  width: 100%;
+  height: auto;
+  position: relative;
+  margin-bottom: -10px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10; /* Поместите кнопки навигации поверх слайдов */
+  background-color: rgba(255, 255, 255, 0.5); /* Прозрачный фон для кнопок */
+  padding: 10px;
+  cursor: pointer;
+}
+
+.swiper-button-next {
+  right: 10px; /* Кнопка следующего слайда справа */
+}
+
+.swiper-button-prev {
+  left: 10px; /* Кнопка предыдущего слайда слева */
+}
+
+.swiper-pagination {
+  position: absolute;
+  bottom: 10px; /* Расположение пагинации под слайдами */
+  width: 100%;
+  text-align: center;
+  z-index: 10; /* Поместите пагинацию поверх слайдов */
+}
+
+/* Модальное окно (скрыто по умолчанию) */
+.modal {
+  display: none; /* Скрыть по умолчанию */
+  position: fixed; /* Оставаться на одном месте */
+  z-index: 1000; /* Слоёвый порядок */
+  padding-top: 60px; /* Верхний отступ */
+  left: 0;
+  top: 0;
+  width: 100%; /* Полная ширина */
+  height: 100%; /* Полная высота */
+  overflow: auto; /* Включить прокрутку, если необходимо */
+  background-color: rgb(0, 0, 0); /* Фон */
+  background-color: rgba(0, 0, 0, 0.9); /* С прозрачностью */
+}
+
+/* Модальное содержимое (изображение) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 30%;
+  max-width: 700px;
+}
+
+/* Закрыть кнопку */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}

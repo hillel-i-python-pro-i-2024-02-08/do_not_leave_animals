@@ -18,6 +18,8 @@ def delete_post(request, post_id):
             post.delete()
             return redirect("blog:post_deleted")
         else:
-            return render(request, "blog/delete_post.html", {"post": post})
+            return render(
+                request=request, template_name="blog/delete_post.html", context={"post": post, "title": "Delete Post"}
+            )
     else:
         return HttpResponseForbidden()
