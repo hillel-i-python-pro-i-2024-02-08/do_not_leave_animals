@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block Body %}
     <h2 style="text-align: center">
-        Its a blog!
+        It's a blog!
         {% if is_staff %}
             <a href="{% url 'blog:new_post' %}">New post</a>
-        </h2>
-    {% endif %}
+        {% endif %}
+    </h2>
     {% for post in posts %}
         <div style="margin: auto" class="col-md-4 mb-4">
             <div class="card text-center">
