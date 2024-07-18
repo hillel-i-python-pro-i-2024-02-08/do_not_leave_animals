@@ -24,17 +24,21 @@
                             {{ animal.description }}
                         {% endif %}
                     </p>
-                    <img style="max-width: 100%;
-                                max-height: 300px;
-                                margin-bottom: 20px"
-                         src="{{ animal.last_photo.image.url }}"
-                         alt="{{ animal }}"
-                         class="clickable-image"
-                         onclick="openModal('{{ animal.last_photo.image.url }}')">
-                    <div id="imageModal" class="modal">
-                        <span class="close" onclick="closeModal()">X</span>
-                        <img class="modal-content" id="modalImage" alt="{{ animal }}">
-                    </div>
+                    {% if animal.last_photo %}
+                        <img style="max-width: 100%;
+                                    max-height: 300px;
+                                    margin-bottom: 20px"
+                             src="{{ animal.last_photo.image.url }}"
+                             alt="{{ animal }}"
+                             class="clickable-image"
+                             onclick="openModal('{{ animal.last_photo.image.url }}')">
+                        <div id="imageModal" class="modal">
+                            <span class="close" onclick="closeModal()">X</span>
+                            <img class="modal-content" id="modalImage" alt="{{ animal }}">
+                        </div>
+                        {#                    {% else %}#}
+                        {#                        ...#}
+                    {% endif %}
                     <p style="display: flex;
                               justify-content: space-between;
                               font-size: 16px;
