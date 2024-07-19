@@ -1,19 +1,29 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block Body %}
-    <div style="margin: auto" class="col-md-4 mb-4">
-        <div class="card text-center">
-            <h5 style=" margin-top: 20px; margin-bottom: 20px;">New post</h5>
-            <div class="card-body">
-                <form enctype="multipart/form-data"
-                      method="post"
-                      action="{% url "blog:new_post" %}">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button class="btn btn-primary" type="submit">New post</button>
-                    <a style="color: white"
-                       class="btn btn-info"
-                       href="{% url 'blog:index' %}">Back</a>
-                </form>
+    <div style="margin-top: 30px;" class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mb-4">
+                <div class="card text-center shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h5>New Post</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post"
+                              enctype="multipart/form-data"
+                              action="{% url 'blog:new_post' %}">
+                            {% csrf_token %}
+                            <div class="form-group">{{ form|crispy }}</div>
+                            <!-- Buttons Section -->
+                            <div class="d-flex justify-content-center mt-4">
+                                <button class="btn btn-primary" type="submit">New post</button>
+                                <a style="color: white"
+                                   class="btn btn-info ml-3"
+                                   href="{% url 'blog:index' %}">Back</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

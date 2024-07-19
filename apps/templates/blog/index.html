@@ -12,11 +12,13 @@
                 <div class="card-body">
                     <p style="text-align: left; font-size: 28px">{{ post.title }}</p>
                     <p style=" text-align: left; font-size: 14px; margin-top: -15px">{{ post.description }}</p>
-                    <img style="max-width: 100%;
-                                max-height: 300px;
-                                margin-bottom: 20px"
-                         src="{{ post.photo.url }}"
-                         alt="тут должен был быть бельчонок Деги ;(">
+                    {% if post.photo %}
+                        <img style="max-width: 100%;
+                                    max-height: 300px;
+                                    margin-bottom: 20px"
+                             src="{{ post.photo.url }}"
+                             alt="тут должен был быть бельчонок Деги ;(">
+                    {% endif %}
                     <div style="text-align: right">
                         <h5>{{ post.date }}</h5>
                     </div>

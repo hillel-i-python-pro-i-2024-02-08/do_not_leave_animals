@@ -1,13 +1,19 @@
 {% extends "base.html" %}
 {% block Body %}
-    <div style="margin: auto" class="col-md-4 mb-4">
-        <div class="card text-center">
-            <h5 style=" margin-top: 20px; margin-bottom: 20px;">Post deleted.</h5>
-            <div class="card-body">
-                <a class="btn btn-info"
-                   href="{% url 'blog:index' %}"
-                   style="color: white">Blog page</a>
-                <a class="btn btn-primary" href="{% url 'blog:new_post' %}">New post</a>
+    <div style="margin-top: 100px" class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mb-4">
+                <div class="card text-center shadow">
+                    <div class="card-header bg-danger text-white">
+                        <h5>Post Deleted</h5>
+                    </div>
+                    <div class="card-body">
+                        <a class="btn btn-info"
+                           href="{% url 'blog:index' %}"
+                           style="color: white">Blog Page</a>
+                        <a class="btn btn-primary ml-3" href="{% url 'blog:new_post' %}">New Post</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
