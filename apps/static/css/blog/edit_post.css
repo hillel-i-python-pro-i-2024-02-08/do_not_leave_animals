@@ -1,0 +1,57 @@
+/* Стили для карточек на странице редактирования постов */
+.card {
+  background: #f9f9f9; /* Светло-серый фон для карточек */
+  border: 1px solid #ddd; /* Легкая рамка */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #55cc5a; /* Основной зелёный цвет для заголовка карточки */
+  color: #ffffff; /* Белый цвет текста */
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body h5 {
+  margin-bottom: 20px;
+}
+
+/* Стили для кнопок в форме */
+.btn-primary {
+  background-color: #4caf50; /* Основной зелёный цвет для кнопок */
+  border-color: #4caf50;
+}
+
+.btn-primary:hover {
+  background-color: #388e3c; /* Тёмно-зелёный цвет кнопок при наведении */
+  border-color: #388e3c;
+}
+
+.btn-danger {
+  background-color: #f44336; /* Красный цвет для кнопок удаления */
+  border-color: #f44336;
+}
+
+.btn-danger:hover {
+  background-color: #d32f2f; /* Тёмно-красный цвет кнопок при наведении */
+  border-color: #d32f2f;
+}
+
+/* Стили для формы */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group .form-control {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.form-group .form-control:focus {
+  border-color: #4caf50; /* Основной зелёный цвет при фокусе */
+  box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+}

@@ -12,12 +12,14 @@ def feed(request):
             When(last_comment_date__isnull=True, then=F("modified_at")), default=F("last_comment_date")
         ),
     ).order_by("-last_update_date", "-modified_at")
+    print(animal_cards)
 
     paginator = Paginator(animal_cards, 3)
-    page_obj = request.GET.get("page")
+    page = request.GET.get("page")
+    page_obj = paginator.get_page(page)
 
     try:
-        posts = paginator.page(page_obj)
+        posts = paginator.page(page)
     except NameError:
         posts = paginator.page(1)
     except PageNotAnInteger:

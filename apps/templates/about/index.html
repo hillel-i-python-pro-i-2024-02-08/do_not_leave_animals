@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% block Head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock Head %}
 {% block Body %}
     <h2 style="text-align: center">About us</h2>
     <div style="margin: auto" class="col-md-4 mb-4">
@@ -24,15 +28,12 @@
         </div>
     </div>
     <div style="margin: auto" class="col-md-4 mb-4">
+        <h2 style="text-align: center">Contacts:</h2>
         <div class="card text-center">
             <div class="card-body">
-                <h2>Contacts:</h2>
-                <p>+380 (048) 000 00 00</p>
-                <h4>Social:</h4>
+                <p>Telephone: +380 (048) 000 00 00</p>
                 <a href="https://t.me/">Telegram</a>
-                <br>
                 <a href="https://facebook.com/">Facebook</a>
-                <br>
                 <a href="https://instagram.com">Instagram</a>
             </div>
         </div>

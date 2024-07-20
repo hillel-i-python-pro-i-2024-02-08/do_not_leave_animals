@@ -1,0 +1,76 @@
+/* Основные стили для редактирования карточки */
+body {
+  background-color: #f9f9f9; /* Легкий фон для страницы */
+}
+
+.card {
+  background: #ffffff; /* Белый фон карточек */
+  border: 1px solid #e0e0e0; /* Серая граница */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.card-body {
+  padding: 20px;
+  color: #333;
+}
+
+.card-header {
+  background-color: #388e3c; /* Основной зелёный цвет для хедера */
+  color: #ffffff;
+}
+
+.card-header h5 {
+  margin: 0;
+}
+
+.btn-success {
+  background-color: #388e3c; /* Основной зелёный цвет для кнопок */
+  border-color: #388e3c;
+  color: #ffffff;
+}
+
+.btn-success:hover {
+  background-color: #2c6b2f; /* Тёмно-зелёный цвет для кнопок при наведении */
+  border-color: #2c6b2f;
+}
+
+.btn-save {
+  background-color: #388e3c; /* Основной зелёный цвет для кнопок Photos и Comments */
+  border-color: #388e3c;
+  color: #ffffff;
+}
+
+.btn-save:hover {
+  background-color: #2c6b2f; /* Тёмно-зелёный цвет для кнопок Photos и Comments при наведении */
+  border-color: #2c6b2f;
+}
+
+.btn-danger {
+  background-color: #f44336; /* Цвет для кнопки Delete */
+  border-color: #f44336;
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background-color: #d32f2f; /* Тёмно-красный цвет при наведении */
+  border-color: #d32f2f;
+}
+
+a {
+  color: #388e3c; /* Основной зелёный цвет для ссылок */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #2c6b2f; /* Тёмно-зелёный цвет для ссылок при наведении */
+  text-decoration: underline;
+}

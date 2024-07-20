@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% block Head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/crm/new_card.css' %}">
+{% endblock Head %}
 {% block Body %}
     <div style="margin-top: 30px;" class="container">
         <div class="row justify-content-center">
             <div class="col-md-8 mb-4">
                 <div class="card text-center shadow">
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header bg-success text-white">
                         <h5>Create New Card</h5>
                     </div>
                     <div class="card-body">
@@ -15,7 +20,7 @@
                             {% csrf_token %}
                             <div class="form-group">{{ form|crispy }}</div>
                             <!-- Photos Section -->
-                            <button class="btn btn-secondary mt-4"
+                            <button class="btn btn-success mt-4"
                                     type="button"
                                     data-toggle="collapse"
                                     data-target="#photosSection"
@@ -28,7 +33,7 @@
                                 </div>
                             </div>
                             <!-- Comments Section -->
-                            <button class="btn btn-secondary mt-4"
+                            <button class="btn btn-success mt-4"
                                     type="button"
                                     data-toggle="collapse"
                                     data-target="#commentsSection"
@@ -46,10 +51,8 @@
                             </div>
                             <!-- Buttons Section -->
                             <div class="d-flex justify-content-center mt-4">
-                                <button class="btn btn-primary" type="submit">Save</button>
-                                <a style="color: white"
-                                   class="btn btn-info ml-3"
-                                   href="{% url 'crm:crm' %}">Back</a>
+                                <button class="btn btn-success" type="submit">Save</button>
+                                <a class="btn btn-secondary ml-3" href="{% url 'crm:crm' %}">Back</a>
                             </div>
                         </form>
                     </div>

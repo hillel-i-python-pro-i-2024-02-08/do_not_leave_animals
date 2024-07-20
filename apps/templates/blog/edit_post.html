@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% block Head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog/edit_post.css' %}">
+{% endblock Head %}
 {% block Body %}
     <div style="margin-top: 30px;" class="container">
         <div class="row justify-content-center">
             <div class="col-md-8 mb-4">
                 <div class="card text-center shadow">
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header">
                         <h5>Edit Post</h5>
                     </div>
                     <div class="card-body">

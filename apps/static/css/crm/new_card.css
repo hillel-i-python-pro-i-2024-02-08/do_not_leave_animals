@@ -1,0 +1,87 @@
+/* Основные стили для новой карточки */
+body {
+  background-color: #f9f9f9; /* Легкий фон для страницы */
+}
+
+.card {
+  background: #ffffff; /* Белый фон карточек */
+  border: 1px solid #e0e0e0; /* Серая граница */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.card-body {
+  padding: 20px;
+  color: #333;
+}
+
+.card-header {
+  background-color: #388e3c; /* Основной зелёный цвет для хедера */
+  color: #ffffff;
+}
+
+.card-header h5 {
+  margin: 0;
+}
+
+.btn-success {
+  background-color: #388e3c; /* Основной зелёный цвет для кнопок */
+  border-color: #388e3c;
+  color: #ffffff;
+}
+
+.btn-success:hover {
+  background-color: #2c6b2f; /* Тёмно-зелёный цвет для кнопок при наведении */
+  border-color: #2c6b2f;
+}
+
+.btn-photo {
+  background-color: #5aaf5f; /* Светлый зелёный цвет для кнопки Photos */
+  border-color: #5aaf5f;
+  color: #ffffff;
+}
+
+.btn-photo:hover {
+  background-color: #4a9c4a; /* Тёмно-зелёный цвет для кнопки Photos при наведении */
+  border-color: #4a9c4a;
+}
+
+.btn-comments {
+  background-color: #76c076; /* Средний зелёный цвет для кнопки Comments */
+  border-color: #76c076;
+  color: #ffffff;
+}
+
+.btn-comments:hover {
+  background-color: #5ba15b; /* Тёмно-зелёный цвет для кнопки Comments при наведении */
+  border-color: #5ba15b;
+}
+
+.btn-secondary {
+  background-color: #4f5d75; /* Цвет для кнопок 'Back' */
+  border-color: #4f5d75;
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background-color: #3e4a61; /* Тёмно-серый цвет при наведении */
+  border-color: #3e4a61;
+}
+
+a {
+  color: #388e3c; /* Основной зелёный цвет для ссылок */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #2c6b2f; /* Тёмно-зелёный цвет для ссылок при наведении */
+  text-decoration: underline;
+}

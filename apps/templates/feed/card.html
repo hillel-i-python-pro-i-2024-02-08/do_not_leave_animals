@@ -27,28 +27,23 @@
                         <div class="swiper-wrapper">
                             {% for img in animal_photo %}
                                 <div class="swiper-slide">
-                                    <img style="max-width: 100%;
-                                                max-height: 300px;
-                                                margin-bottom: 20px"
-                                         src="{{ img.image.url }}"
-                                         alt="{{ animal }}"
-                                         class="clickable-image"
-                                         onclick="openModal('{{ img.image.url }}')">
+                                    <img src="{{ img.image.url }}" alt="{{ animal }}">
                                 </div>
                             {% endfor %}
                         </div>
-                        <!-- Add Navigation -->
+                        <!-- Добавьте элементы навигации и пагинации, если нужно -->
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
-                        <!-- Add Pagination -->
                         <div class="swiper-pagination"></div>
                     </div>
-                    <div id="imageModal" class="modal">
-                        <span class="close" onclick="closeModal()">X</span>
-                        <img class="modal-content" id="modalImage" alt="{{ animal }}">
-                    </div>
-                    <p style="text-align: right; font-size: 20px">{{ animal.created_at }}</p>
-                    <p style="text-align: left; font-size: 16px">Comments ({{ animal.comments.count }})</p>
+                    <p style="margin-top: 20px;
+                              display: flex;
+                              justify-content: space-between;
+                              font-size: 18px;
+                              margin-bottom: 10px">
+                        Comments ({{ animal.comments.count }}):
+                        <span style="font-size: 20px">{{ animal.created_at }}</span>
+                    </p>
                     {% for com in comments %}
                         <div style="text-align: left; margin-left: 20px; font-size: 16px">
                             <p style="margin-top: -15px; font-size: 14px">{{ com.comment_text }}</p>
@@ -62,40 +57,18 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <!-- Initialize Swiper -->
     <script>
-        var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 1,
-            spaceBetween: 10,
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    </script>
-    <script>
-    function openModal(imageUrl) {
-        var modal = document.getElementById("imageModal");
-        var modalImg = document.getElementById("modalImage");
-        modal.style.display = "flex"; // Используем flex для центрирования
-        modalImg.src = imageUrl;
-    }
-
-    function closeModal() {
-        var modal = document.getElementById("imageModal");
-        modal.style.display = "none";
-    }
-
-    // Закрытие модального окна при клике на область вне изображения
-    var modal = document.getElementById("imageModal");
-    modal.addEventListener('click', function(event) {
-        if (event.target !== modal && event.target !== document.getElementById("modalImage")) {
-            return;
-        }
-        closeModal();
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
     });
     </script>
 {% endblock Body %}

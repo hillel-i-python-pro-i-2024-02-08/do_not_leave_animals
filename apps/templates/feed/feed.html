@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{% static 'css/feed/feed.css' %}">
 {% endblock Head %}
 {% block Body %}
-    <h2 style="text-align: center">Its a feed!</h2>
+    <h2>Its a feed!</h2>
     {% for animal in posts %}
         <div style="margin: auto" class="col-md-4 mb-4">
             <div class="card text-center">
@@ -29,15 +29,7 @@
                                     max-height: 300px;
                                     margin-bottom: 20px"
                              src="{{ animal.last_photo.image.url }}"
-                             alt="{{ animal }}"
-                             class="clickable-image"
-                             onclick="openModal('{{ animal.last_photo.image.url }}')">
-                        <div id="imageModal" class="modal">
-                            <span class="close" onclick="closeModal()">X</span>
-                            <img class="modal-content" id="modalImage" alt="{{ animal }}">
-                        </div>
-                        {#                    {% else %}#}
-                        {#                        ...#}
+                             alt="{{ animal }}">
                     {% endif %}
                     <p style="display: flex;
                               justify-content: space-between;
@@ -61,22 +53,15 @@
             <ul class="pagination">
                 {% if page_obj.has_previous %}
                     <li class="page-item">
-                        <a class="page-link" href="?page=1"> << </a>
+                        <a class="page-link" href="?page=1"><<</a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}"> < </a>
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}"><</a>
                     </li>
                 {% endif %}
-                {{ page_obj.paginator.num_pages }}
-                {% if page_obj.paginator.num_pages %}
-                    <li>
-                        <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
-                    </li>
-                {% else %}
-                    <li class="page-item disabled">
-                        <span class="page-link">Page 1 of 1.</span>
-                    </li>
-                {% endif %}
+                <li class="page-item disabled">
+                    <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+                </li>
                 {% if page_obj.has_next %}
                     <li class="page-item">
                         <a class="page-link" href="?page={{ page_obj.next_page_number }}">></a>
@@ -88,26 +73,4 @@
             </ul>
         </nav>
     </div>
-    <script>
-    function openModal(imageUrl) {
-        var modal = document.getElementById("imageModal");
-        var modalImg = document.getElementById("modalImage");
-        modal.style.display = "flex";
-        modalImg.src = imageUrl;
-    }
-
-    function closeModal() {
-        var modal = document.getElementById("imageModal");
-        modal.style.display = "none";
-    }
-
-
-    var modal = document.getElementById("imageModal");
-    modal.addEventListener('click', function(event) {
-        if (event.target !== modal && event.target !== document.getElementById("modalImage")) {
-            return;
-        }
-        closeModal();
-    });
-    </script>
 {% endblock Body %}

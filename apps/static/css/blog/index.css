@@ -1,0 +1,71 @@
+/* Стили для ссылок */
+a {
+  color: #83ff87; /* Основной зелёный цвет для ссылок */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #57ef5e; /* Тёмно-зелёный цвет для ссылок при наведении */
+  text-decoration: none;
+}
+
+/* Стили для карточек на странице блога */
+.card {
+  background: #f0fff0; /* Светло-зеленый фон для карточек */
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.card-body {
+  padding: 20px;
+  color: #333;
+}
+
+.card-body p {
+  color: #2d6a4f; /* Цвет текста внутри карточек */
+}
+
+.blog-title {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Стили для даты публикации и кнопок */
+.card-body h5 {
+  color: #2d6a4f;
+}
+
+.card-body a.btn {
+  background-color: #4caf50; /* Основной зелёный цвет для кнопок */
+  border-color: #4caf50;
+  color: #ffffff;
+}
+
+.card-body a.btn:hover {
+  background-color: #388e3c; /* Тёмно-зелёный цвет кнопок при наведении */
+  border-color: #388e3c;
+}
+
+/* Стили для пагинации */
+.pagination .page-item .page-link {
+  color: #4caf50;
+}
+
+.pagination .page-item .page-link:hover {
+  color: #388e3c;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #4caf50;
+}
