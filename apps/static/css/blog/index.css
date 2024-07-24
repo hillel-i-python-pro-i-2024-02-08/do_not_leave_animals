@@ -1,10 +1,10 @@
 /* Стили для ссылок */
-a {
+.new-post {
   color: #83ff87; /* Основной зелёный цвет для ссылок */
   text-decoration: none;
 }
 
-a:hover {
+.new-post:hover {
   color: #57ef5e; /* Тёмно-зелёный цвет для ссылок при наведении */
   text-decoration: none;
 }

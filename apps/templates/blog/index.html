@@ -8,7 +8,7 @@
     <h2 class="blog-title">
         It's a blog!
         {% if is_staff %}
-            <a href="{% url 'blog:new_post' %}">New post</a>
+            <a class="new-post" href="{% url 'blog:new_post' %}">New post</a>
         {% endif %}
     </h2>
     {% for post in posts %}

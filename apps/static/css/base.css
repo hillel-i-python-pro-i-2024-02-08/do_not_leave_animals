@@ -1,4 +1,3 @@
-/* Стили для body и footer */
 html,
 body {
   height: 100%;
@@ -19,18 +18,30 @@ footer {
   text-align: center;
   border-top: 1px solid #cdcdcd;
   width: 100%;
-  margin-top: auto; /* ensures the footer is pushed to the bottom */
+  margin-top: auto;
 }
 
 .footer-content {
+  min-width: 500px;
+  max-width: 800px;
+  margin: auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .footer-left,
 .footer-right {
   text-align: left;
+  flex: 1;
+  min-width: 250px; /* Минимальная ширина колонок футера */
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px; /* Отступ снизу для выравнивания */
 }
 
 .footer-nav a {
@@ -38,6 +49,12 @@ footer {
   color: #333;
   margin: 0 10px;
   font-size: 14px;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px; /* Отступ снизу для выравнивания */
 }
 
 .footer-social a {
@@ -51,18 +68,23 @@ footer {
 }
 
 .footer-contact p {
-  margin: 0;
+  margin: 5px 0;
   color: #2d6a4f;
+}
+
+.footer-contact {
+  text-align: right;
 }
 
 .footer-copyright {
   font-size: 12px;
   color: #1b5e20;
+  margin-top: 15px; /* Отступ сверху для разделения от основного контента */
 }
 
 /* Стили для карточек */
 .card {
-  background: #f0fff0; /* Светло-зеленый фон вместо белого */
+  background: #f0fff0;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -82,7 +104,7 @@ footer {
 }
 
 .card-body p {
-  color: #2d6a4f; /* Цвет текста внутри карточек */
+  color: #2d6a4f;
 }
 
 h2 {
@@ -93,39 +115,44 @@ h2 {
 
 /* Стили для header */
 header {
-  background-color: #e0f2e9; /* Цвет фона, аналогичный футеру */
-  border-bottom: 1px solid #cdcdcd; /* Граница снизу, аналогичная футеру */
-}
-
-.navbar {
-  padding: 10px 20px; /* Отступы для навигационной панели */
-}
-
-.navbar-brand {
-  color: #2d6a4f; /* Цвет для бренда (ссылки) */
-}
-
-.navbar-brand:hover {
-  color: #1b5e20; /* Цвет при наведении */
-}
-
-.nav-link {
-  color: #2d6a4f; /* Цвет ссылок */
-}
-
-.nav-link:hover {
-  color: #1b5e20; /* Цвет при наведении на ссылки */
-}
-
-header {
+  background-color: #e0f2e9;
+  border-bottom: 1px solid #cdcdcd;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000; /* Убедитесь, что хедер находится поверх других элементов */
+  z-index: 1000;
+}
+
+.navbar {
+  padding: 10px 20px;
+}
+
+.navbar-brand {
+  color: #2d6a4f;
+}
+
+.navbar-brand:hover {
+  color: #1b5e20;
+}
+
+.nav-link {
+  color: #2d6a4f;
+}
+
+.nav-link:hover {
+  color: #1b5e20;
 }
 
 a {
-  color: #13ca17; /* Основной зелёный цвет для ссылок */
+  color: #13ca17;
   text-decoration: none;
+}
+
+.nav-nav {
+  color: #2d6a4f;
+}
+
+.nav-nav:hover {
+  color: #2d6a4f;
 }
