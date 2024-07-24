@@ -14,10 +14,11 @@ def feed(request):
     ).order_by("-last_update_date", "-modified_at")
 
     paginator = Paginator(animal_cards, 3)
-    page_obj = request.GET.get("page")
+    page = request.GET.get("page")
+    page_obj = paginator.get_page(page)
 
     try:
-        posts = paginator.page(page_obj)
+        posts = paginator.page(page)
     except NameError:
         posts = paginator.page(1)
     except PageNotAnInteger:

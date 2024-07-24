@@ -12,7 +12,7 @@ def crm_index(request):
     :param request: request object
     :return: render index page
     """
-    paginator = Paginator(AnimalCard.objects.order_by("-modified_at"), 3)
+    paginator = Paginator(AnimalCard.objects.order_by("-modified_at"), 10)
     page = request.GET.get("page")
     page_obj = paginator.get_page(page)
     try:

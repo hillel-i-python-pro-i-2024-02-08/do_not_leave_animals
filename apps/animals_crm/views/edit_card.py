@@ -22,7 +22,7 @@ def edit_card(request: HttpRequest, card_id: int):
         photos_formset = AnimalPhotoFormSet(instance=card_instance)
         comments_formset = AnimalCommentFormSet(instance=card_instance)
     context = {
-        "title": "New Card",
+        "title": "Edit Card",
         "form": form,
         "photos_formset": photos_formset,
         "comments_formset": comments_formset,

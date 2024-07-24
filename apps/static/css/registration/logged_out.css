@@ -1,0 +1,56 @@
+/* Стили для страницы выхода */
+.card {
+  background: #f9f9f9; /* Светлый фон для карточки */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+  padding: 20px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.card-body {
+  padding: 20px;
+  color: #333;
+  text-align: center;
+}
+
+h2 {
+  color: #388e3c; /* Зеленый цвет для текста заголовка */
+}
+
+.button-home {
+  color: #ffffff;
+  background-color: #4a9c4a;
+  border: none;
+  border-radius: 4px; /* Округлые углы */
+  padding: 10px 20px; /* Отступы внутри кнопки */
+  font-size: 16px; /* Размер шрифта */
+  text-align: center; /* Выравнивание текста по центру */
+  text-decoration: none; /* Убираем подчеркивание у ссылок */
+  display: inline-block; /* Делает кнопку строчным блочным элементом */
+  cursor: pointer; /* Курсор при наведении */
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s; /* Плавные переходы для фона и тени */
+}
+
+.button-home:hover {
+  background-color: #3e8e3e; /* Цвет фона при наведении */
+}
+
+.button-home:active {
+  background-color: #357a35; /* Цвет фона при нажатии */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); /* Тень внутри кнопки при нажатии */
+}
+
+.button-home:focus {
+  outline: none; /* Убираем стандартный фокус */
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2); /* Тень вокруг кнопки при фокусе */
+}

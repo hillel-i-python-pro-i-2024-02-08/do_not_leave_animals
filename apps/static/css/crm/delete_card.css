@@ -1,0 +1,65 @@
+/* Основные стили для страницы подтверждения удаления карточки */
+body {
+  background-color: #f9f9f9; /* Легкий фон для страницы */
+}
+
+.card {
+  background: #ffffff; /* Белый фон карточек */
+  border: 1px solid #e0e0e0; /* Серая граница */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.card-body {
+  padding: 20px;
+  color: #333;
+}
+
+.card-header {
+  background-color: #d32f2f; /* Основной красный цвет для хедера */
+  color: #ffffff;
+}
+
+.card-header h5 {
+  margin: 0;
+}
+
+.btn-danger {
+  background-color: #d32f2f; /* Основной красный цвет для кнопки Delete */
+  border-color: #d32f2f;
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background-color: #c62828; /* Тёмно-красный цвет для кнопки Delete при наведении */
+  border-color: #c62828;
+}
+
+.btn-back {
+  background-color: #388e3c; /* Основной зелёный цвет для кнопки Back */
+  border-color: #388e3c;
+  color: #ffffff;
+}
+
+.btn-back:hover {
+  background-color: #2c6b2f; /* Тёмно-зелёный цвет для кнопки Back при наведении */
+  border-color: #2c6b2f;
+}
+
+a {
+  color: #388e3c; /* Основной зелёный цвет для ссылок */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #2c6b2f; /* Тёмно-зелёный цвет для ссылок при наведении */
+  text-decoration: underline;
+}

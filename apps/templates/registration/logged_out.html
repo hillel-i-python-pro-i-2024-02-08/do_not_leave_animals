@@ -1,12 +1,20 @@
 {% extends "base.html" %}
 {% block Head %}
     <title>DNLA | Logged Out</title>
+    {% load static %}
+    <link rel="stylesheet"
+          href="{% static 'css/registration/logged_out.css' %}">
 {% endblock Head %}
 {% block Body %}
-    <div style="margin: auto" class="col-md-4 mb-4">
-        <div class="card text-center">
-            <div class="card-body">
-                <h2>You have been logged out. Thank you for visiting!</h2>
+    <div style="margin-top: 100px" class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h2 style="margin-bottom: 40px">You have been logged out. Thank you for visiting!</h2>
+                        <a class="button-home" href="{% url 'home_page:home' %}">Home</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

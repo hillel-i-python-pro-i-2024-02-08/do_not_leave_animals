@@ -1,22 +1,29 @@
 {% extends "base.html" %}
+{% block Head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog/index.css' %}">
+{% endblock Head %}
 {% block Body %}
-    <h2 style="text-align: center">
-        Its a blog!
+    <h2 class="blog-title">
+        It's a blog!
         {% if is_staff %}
             <a href="{% url 'blog:new_post' %}">New post</a>
-        </h2>
-    {% endif %}
+        {% endif %}
+    </h2>
     {% for post in posts %}
         <div style="margin: auto" class="col-md-4 mb-4">
             <div class="card text-center">
                 <div class="card-body">
                     <p style="text-align: left; font-size: 28px">{{ post.title }}</p>
-                    <p style=" text-align: left; font-size: 14px; margin-top: -15px">{{ post.description }}</p>
-                    <img style="max-width: 100%;
-                                max-height: 300px;
-                                margin-bottom: 20px"
-                         src="{{ post.photo.url }}"
-                         alt="тут должен был быть бельчонок Деги ;(">
+                    <p style="text-align: left; font-size: 14px; margin-top: -15px">{{ post.description }}</p>
+                    {% if post.photo %}
+                        <img style="max-width: 100%;
+                                    max-height: 300px;
+                                    margin-bottom: 20px"
+                             src="{{ post.photo.url }}"
+                             alt="Image for {{ post.title }}">
+                    {% endif %}
                     <div style="text-align: right">
                         <h5>{{ post.date }}</h5>
                     </div>
@@ -32,10 +39,10 @@
             <ul class="pagination">
                 {% if page_obj.has_previous %}
                     <li class="page-item">
-                        <a class="page-link" href="?page=1"> << </a>
+                        <a class="page-link" href="?page=1"><<</a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}"> < </a>
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}"><</a>
                     </li>
                 {% endif %}
                 <li class="page-item disabled">

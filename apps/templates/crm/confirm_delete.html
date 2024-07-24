@@ -1,11 +1,32 @@
 {% extends "base.html" %}
+{% block Head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/crm/delete_card.css' %}">
+{% endblock Head %}
 {% block Body %}
-    <p>Are you sure you want to delete card {{ instance.name }}?</p>
-    <form method="post"
-          enctype="multipart/form-data"
-          action="{% url 'crm:delete_card' instance.id %}">
-        {% csrf_token %}
-        <button class="btn btn-danger" type="submit">Delete</button>
-        <a href="{% url 'crm:edit_card' instance.id %}" class="btn btn-primary">Back</a>
-    </form>
+    <div style="margin-top: 100px" class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mb-4">
+                <div class="card text-center shadow">
+                    <div class="card-header bg-danger text-white">
+                        <h5>Confirm Deletion</h5>
+                    </div>
+                    <div style="margin-top: 20px" class="card-body">
+                        <p>Are you sure you want to delete card "{{ instance.name }}"?</p>
+                        <form method="post"
+                              enctype="multipart/form-data"
+                              action="{% url 'crm:delete_card' instance.id %}">
+                            {% csrf_token %}
+                            <div class="d-flex justify-content-center mt-4">
+                                <button class="btn btn-danger" type="submit">Delete</button>
+                                <a href="{% url 'crm:edit_card' instance.id %}"
+                                   class="btn btn-back ml-3">Back</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock Body %}
