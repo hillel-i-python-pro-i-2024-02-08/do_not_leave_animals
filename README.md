@@ -69,4 +69,3 @@ python manage.py runserver
 - **Compose** - Оркестратор контейнерів
 - **Bootstrap** - CSS-фреймворк.
 - **django-crispy-forms** - Утиліта для роботи з формами.
-- **celery** - Асинхронна обробка завдань.
