@@ -7,9 +7,10 @@ services:
     command: /start.sh
 
     volumes: &app_volumes
-      - ./files:/wd/files:rw # TODO: Remove this after migration to media.
+      - ./files:/wd/files:rw
       - ./media:/wd/media:rw
       - ./staticfiles:/wd/staticfiles:rw
+
     user: "${UID:-1000}"
     env_file:
       - .env

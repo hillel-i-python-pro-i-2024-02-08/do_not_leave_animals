@@ -12,9 +12,9 @@ echo-i-uid:
 
 
 # [docker]-[BEGIN]
-.PHONY: d-run
+.PHONY: d-homework-i-run
 # Just run
-d-run:
+d-homework-i-run:
 	@export UID=${UID} &&\
 	COMPOSE_PROFILES=full_dev \
 	COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \
@@ -22,9 +22,9 @@ d-run:
 			--build
 
 
-.PHONY: d-run-i-local-dev
+.PHONY: d-homework-i-local-dev
 # Run services for local development
-d-run-i-local-dev:
+d-homework-i-local-dev:
 	@export UID=${UID} &&\
 	COMPOSE_PROFILES=local_dev \
 	COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \
@@ -32,9 +32,9 @@ d-run-i-local-dev:
 			--build
 
 
-.PHONY: d-purge
+.PHONY: make d-homework-i-purge
 # Purge all data related with services
-d-purge:
+make d-homework-i-purge:
 	@export UID=${UID} &&\
 	COMPOSE_PROFILES=full_dev \
 	COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \

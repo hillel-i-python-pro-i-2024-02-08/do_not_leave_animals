@@ -12,4 +12,4 @@ set -o nounset
 set -o xtrace
 # [bash_init]-[END]
 
-python manage.py runserver
+python manage.py runserver 0.0.0.0:8000

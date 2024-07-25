@@ -10,14 +10,17 @@ networks:
 x-app: &app
   build: .
 
+x-depends-on-db: &depends_on_db
+  postgres:
+    condition: service_healthy
+
 services:
   app:
     <<: *app
     depends_on:
       init:
         condition: service_completed_successfully
-      postgres:
-        condition: service_healthy
+      <<: *depends_on_db
 
     profiles:
       - full_dev
@@ -29,8 +32,7 @@ services:
   init:
     <<: *app
     depends_on:
-      postgres:
-        condition: service_healthy
+      <<: *depends_on_db
     command: /init.sh
 
     profiles:
