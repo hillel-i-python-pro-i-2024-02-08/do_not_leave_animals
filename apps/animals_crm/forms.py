@@ -30,6 +30,14 @@ class AnimalCardForm(forms.ModelForm):
         return age
 
 
+class BaseAnimalPhotoFormSet(forms.BaseInlineFormSet):
+    def add_fields(self, form, index):
+        super().add_fields(form, index)
+        if not form.instance.pk:  # Если это новая форма (extra)
+            if "DELETE" in form.fields:
+                del form.fields["DELETE"]
+
+
 AnimalPhotoFormSet = forms.inlineformset_factory(
     parent_model=AnimalCard,
     model=AnimalPhoto,
@@ -38,6 +46,7 @@ AnimalPhotoFormSet = forms.inlineformset_factory(
     extra=10,
     max_num=10,
     validate_max=True,
+    formset=BaseAnimalPhotoFormSet,
 )
 
 AnimalCommentFormSet = forms.inlineformset_factory(
@@ -46,4 +55,5 @@ AnimalCommentFormSet = forms.inlineformset_factory(
     fields=["comment_text"],
     labels={"comment_text": "Record about animal status"},
     extra=1,
+    formset=BaseAnimalPhotoFormSet,
 )
