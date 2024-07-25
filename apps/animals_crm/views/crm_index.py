@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from apps.helpers import admin_login_required
+from apps.helpers.get_page_obj import get_page_obj
 
 from ..models import AnimalCard
 
@@ -12,18 +12,8 @@ def crm_index(request):
     :param request: request object
     :return: render index page
     """
-    paginator = Paginator(AnimalCard.objects.order_by("-modified_at"), 10)
-    page = request.GET.get("page")
-    page_obj = paginator.get_page(page)
-    try:
-        animals = paginator.page(page)
-    except NameError:
-        animals = paginator.page(1)
-    except PageNotAnInteger:
-        animals = paginator.page(1)
-    except EmptyPage:
-        animals = paginator.page(paginator.num_pages)
+    page_obj, posts = get_page_obj(request, AnimalCard.objects.order_by("-modified_at"), 10)
 
-    context = {"title": "CRM", "animals": animals, "page_obj": page_obj}
+    context = {"title": "CRM", "animals": posts, "page_obj": page_obj}
 
     return render(request, "crm/crm.html", context)
