@@ -13,8 +13,6 @@ x-app: &app
 x-depends-on-db: &depends_on_db
   postgres:
     condition: service_healthy
-  rabbitmq:
-    condition: service_healthy
 
 services:
   app:
