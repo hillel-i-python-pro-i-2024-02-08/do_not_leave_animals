@@ -10,16 +10,19 @@ networks:
 x-app: &app
   build: .
 
+x-depends-on-db: &depends_on_db
+  postgres:
+    condition: service_healthy
+  rabbitmq:
+    condition: service_healthy
+
 services:
   app:
     <<: *app
     depends_on:
       init:
         condition: service_completed_successfully
-      postgres:
-        condition: service_healthy
-      rabbitmq:
-        condition: service_healthy
+      <<: *depends_on_db
 
     profiles:
       - full_dev
@@ -31,8 +34,7 @@ services:
   init:
     <<: *app
     depends_on:
-      postgres:
-        condition: service_healthy
+      <<: *depends_on_db
     command: /init.sh
 
     profiles:
@@ -54,7 +56,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "pg_isready --username ${POSTGRES_USER} --dbname ${POSTGRES_DB}",
+          "pg_isready --username ${POSTGRES_USER}  --dbname ${POSTGRES_DB}",
         ]
       interval: 10s
       timeout: 5s
@@ -71,13 +73,10 @@ services:
       - internal
 
   rabbitmq:
-    image: rabbitmq:3-management
-    environment:
-      RABBITMQ_DEFAULT_USER: user
-      RABBITMQ_DEFAULT_PASS: password
+    image: rabbitmq:3.13.4-management-alpine
 
     healthcheck:
-      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      test: ["CMD", "rabbitmqctl", "node_health_check"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -89,18 +88,16 @@ services:
     networks:
       - internal
 
-  celery:
+  celery-worker:
     <<: *app
-    command: celery -A myproject worker --loglevel=info
-    depends_on:
-      rabbitmq:
-        condition: service_healthy
-      postgres:
-        condition: service_healthy
+    command: /celery_worker_start.sh
 
-    profiles:
-      - full_dev
-      - local_dev
+    depends_on:
+      init:
+        condition: service_completed_successfully
+      <<: *depends_on_db
 
     networks:
       - internal
+    profiles:
+      - full_dev

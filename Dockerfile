@@ -20,6 +20,7 @@ RUN pip install --upgrade pip && \
 COPY --chown=${USER} --chmod=555 ./docker/app/entrypoint.sh /entrypoint.sh
 COPY --chown=${USER} --chmod=555 ./docker/app/start.sh /start.sh
 COPY --chown=${USER} --chmod=555 ./docker/app/init.sh /init.sh
+COPY --chown=${USER} --chmod=555 ./docker/app/celery_worker_start.sh /celery_worker_start.sh
 
 COPY --chown=${USER} Makefile Makefile
 COPY --chown=${USER} manage.py manage.py

@@ -14,8 +14,10 @@ def new_post(request):
     if request.user.is_staff:
         context = {"title": "New Post", "form": PostForm}
         if request.method == "POST":
-            save_post(request.POST, request.FILES)
-            return HttpResponseRedirect("/blog/")
+            form = PostForm(request.POST, request.FILES)
+            if form.is_valid():
+                save_post.delay(form)
+                return HttpResponseRedirect("/blog/")
         elif request.method == "GET":
             return render(request=request, template_name="blog/new_post.html", context=context)
     else:
