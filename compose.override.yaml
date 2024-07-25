@@ -8,7 +8,7 @@ version: "3.8"
 services:
   app:
     ports:
-      - "60000:8000"
+      - "8000:8000"
     command: /start.sh
 
     volumes: &app_volumes
@@ -39,20 +39,3 @@ services:
   postgres:
     ports:
       - "55432:5432"
-
-  rabbitmq:
-    ports:
-      - "5672:5672"
-
-  celery-worker:
-    volumes: *app_volumes
-
-    user: "${UID:-1000}"
-    env_file:
-      - .env
-
-    environment:
-      POSTGRES_HOST: postgres
-      POSTGRES_PORT: 5432
-
-      DJANGO__CELERY_BROKER_URL: "amqp://guest:guest@rabbitmq:5672/"
