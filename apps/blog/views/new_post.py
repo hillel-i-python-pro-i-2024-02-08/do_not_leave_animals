@@ -2,7 +2,6 @@ from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render
 
 from apps.blog.forms import PostForm
-from ..tasks import save_post
 
 
 def new_post(request):
@@ -16,7 +15,7 @@ def new_post(request):
         if request.method == "POST":
             form = PostForm(request.POST, request.FILES)
             if form.is_valid():
-                save_post.delay(form)
+                form.save()
                 return HttpResponseRedirect("/blog/")
         elif request.method == "GET":
             return render(request=request, template_name="blog/new_post.html", context=context)
