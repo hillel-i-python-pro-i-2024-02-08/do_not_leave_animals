@@ -19,8 +19,6 @@ services:
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5432
 
-      DJANGO__CELERY_BROKER_URL: "amqp://guest:guest@rabbitmq:5672/"
-
   init:
     volumes: *app_volumes
     user: "${UID:-1000}"
