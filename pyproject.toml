@@ -13,10 +13,15 @@ Django = "^5.0.6"
 psycopg = {extras = ["binary"], version = "^3.2.1"}
 # work with env variables
 django-environ = "^0.11.2"
+# Work with images
 pillow = "^10.4.0"
+# unique id for mediafiles
 ulid-py = "^1.1.0"
+# beautiful forms
 django-crispy-forms = "^2.2"
+# style
 crispy-bootstrap5 = "^2024.2"
+# Async upload files
 celery = "^5.4.0"
 
 [tool.poetry.group.dev.dependencies]
